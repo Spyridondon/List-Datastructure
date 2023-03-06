@@ -1,4 +1,4 @@
 # List-Datastructure
-A list datastructure from scratch
+Abstract data types
 
-A simple one-way list datastructure implementation, feel free to correct the code if something is wrong
+Simple abstract data types based on list datastructures, feel free to correct the code if something is wrong
