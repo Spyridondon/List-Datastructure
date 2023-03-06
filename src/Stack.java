@@ -14,7 +14,7 @@ public class Stack<T> {
         first = top = null;
     }
 
-    public ListElem<T> put(T info) {
+    public void put(T info) {
         ListElem<T> elem = new ListElem<>(info);
         if (size == 0) {
             first = top = elem;
@@ -29,8 +29,6 @@ public class Stack<T> {
             top = current.getNext();
         }
         size++;
-
-        return elem;
     }
 
     public ListElem<T> get() {

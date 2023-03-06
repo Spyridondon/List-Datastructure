@@ -1,12 +1,13 @@
 public class Main {
     public static void main(String[] args) {
-        Stack<Integer> stack = new Stack<>();
+        Queue<Integer> queue = new Queue<>();
 
-        stack.put(1);
-        stack.put(2);
-        stack.put(3);
+        queue.put(1);
+        queue.put(2);
+        queue.put(3);
+        queue.put(4);
 
-        System.out.println(stack.get());
-        System.out.println(stack.get());
+        System.out.println(queue.get());
+        System.out.println(queue.get());
     }
 }
