@@ -1,6 +1,6 @@
 public class ListElem<T> {
-    public T info;
-    public ListElem<T> next;
+    private T info;
+    private ListElem<T> next;
 
     public ListElem(T info) {
         this.info = info;
@@ -16,5 +16,21 @@ public class ListElem<T> {
     public String toString() {
 
         return info.toString();
+    }
+
+    public ListElem<T> getNext() {
+        return next;
+    }
+
+    public void setNext(ListElem<T> next) {
+        this.next = next;
+    }
+
+    public T getInfo() {
+        return info;
+    }
+
+    public void setInfo(T info) {
+        this.info = info;
     }
 }

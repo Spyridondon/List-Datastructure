@@ -1,16 +1,12 @@
 public class Main {
     public static void main(String[] args) {
-        List<Integer> list = new List<>();
+        Stack<Integer> stack = new Stack<>();
 
-        list.append(1);
-        list.append(2);
-        list.append(3);
-        list.append(4);
+        stack.put(1);
+        stack.put(2);
+        stack.put(3);
 
-        List<Integer> x = List.copyList(list);
-
-        System.out.println(x.hashCode());
-        System.out.println(list.hashCode());
-
+        System.out.println(stack.get());
+        System.out.println(stack.get());
     }
 }

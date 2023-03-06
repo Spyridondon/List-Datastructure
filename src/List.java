@@ -1,7 +1,6 @@
 public class List<T> {
     private ListElem<T> head;
-    private String name;
-
+    private final String name;
     private int size = 0;
 
     public List() {
@@ -21,10 +20,10 @@ public class List<T> {
             head = newElem;
         } else {
             ListElem<T> current = head;
-            while (current.next != null) {
-                current = current.next;
+            while (current.getNext() != null) {
+                current = current.getNext();
             }
-            current.next = newElem;
+            current.setNext(newElem);
         }
         size++;
 
@@ -39,12 +38,12 @@ public class List<T> {
             head = null;
             return current;
         } else {
-            ListElem<T> current = head.next, previous = head;
-            while (current.next != null) {
+            ListElem<T> current = head.getNext(), previous = head;
+            while (current.getNext() != null) {
                 previous = current;
-                current = current.next;
+                current = current.getNext();
             }
-            previous.next = null;
+            previous.setNext(null);
             size--;
 
             return current;
@@ -55,14 +54,14 @@ public class List<T> {
         head = null;
     }
 
-    public ListElem<T> get(int idx) {
+    public ListElem<T> find(int idx) {
         if (idx >= size) {
             throw new IndexOutOfBoundsException(idx);
         } else {
             ListElem<T> current = head;
             int count = 0;
             while (count != idx) {
-                current = current.next;
+                current = current.getNext();
                 count++;
             }
 
@@ -70,7 +69,9 @@ public class List<T> {
         }
     }
 
-    public ListElem<T> add(ListElem<T> elem, int idx) {
+    public ListElem<T> add(T info, int idx) {
+        ListElem<T> elem = new ListElem<>(info);
+
         if (size == 0) {
 
             return null;
@@ -78,10 +79,10 @@ public class List<T> {
 
             throw new IndexOutOfBoundsException(idx);
         } else {
-            ListElem<T> place = get(idx-1);
-            ListElem<T> next = place.next;
-            place.next = elem;
-            elem.next = next;
+            ListElem<T> place = find(idx-1);
+            ListElem<T> next = place.getNext();
+            place.setNext(elem);
+            elem.setNext(next);
 
             return elem;
         }
@@ -95,9 +96,9 @@ public class List<T> {
 
             throw new IndexOutOfBoundsException(idx);
         } else {
-            ListElem<T> before = get(idx-1), current = get(idx);
-            before.next = elem;
-            elem.next = current.next;
+            ListElem<T> before = find(idx-1), current = find(idx);
+            before.setNext(elem);
+            elem.setNext(current.getNext());
 
             return elem;
         }
@@ -110,11 +111,11 @@ public class List<T> {
 
             return null;
         } else {
-            String result = "[ " + head.info.toString();
+            String result = "[ " + head.getInfo().toString();
             ListElem<T> current = head;
-            while (current.next != null) {
-                result += ", " + current.next.info.toString();
-                current = current.next;
+            while (current.getNext() != null) {
+                result += ", " + current.getNext().getInfo().toString();
+                current = current.getNext();
             }
 
             return result + " ]";
@@ -125,10 +126,14 @@ public class List<T> {
         List<T> newList = new List<>();
         ListElem<T> current = list.head;
         while (current != null) {
-            newList.append(current.info);
-            current = current.next;
+            newList.append(current.getInfo());
+            current = current.getNext();
         }
 
         return newList;
+    }
+
+    public int getSize() {
+        return size;
     }
 }
