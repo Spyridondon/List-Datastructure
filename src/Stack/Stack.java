@@ -1,3 +1,7 @@
+package Stack;
+
+import ListElem.ListElem;
+
 public class Stack<T> {
     private ListElem<T> first;
     private ListElem<T> top;
@@ -46,6 +50,7 @@ public class Stack<T> {
         } else {
             try {
                 return top;
+
             } finally {
                 top = find(size-2);
                 size--;
@@ -75,4 +80,5 @@ public class Stack<T> {
     public ListElem<T> getTop() {
         return top;
     }
+
 }

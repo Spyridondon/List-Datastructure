@@ -1,3 +1,7 @@
+package Queue;
+
+import ListElem.ListElem;
+
 public class Queue<T> {
     private ListElem<T> first, last;
     private int size = 0;

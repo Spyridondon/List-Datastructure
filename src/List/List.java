@@ -1,11 +1,18 @@
-public class List<T> {
+package List;
+
+import ListElem.ListElem;
+
+import java.util.Iterator;
+
+
+public class List<T> implements Iterable<T> {
     private ListElem<T> head;
     private final String name;
     private int size = 0;
 
     public List() {
         head = null;
-        name = null;
+        name = "";
     }
 
     public List(String name) {
@@ -123,7 +130,7 @@ public class List<T> {
     }
 
     public static <T> List<T> copyList(List<T> list) {
-        List<T> newList = new List<>();
+        List<T> newList = new List<T>();
         ListElem<T> current = list.head;
         while (current != null) {
             newList.append(current.getInfo());
@@ -135,5 +142,29 @@ public class List<T> {
 
     public int getSize() {
         return size;
+    }
+
+    public Iterator<T> iterator() {
+        return new ListIterator<T>(head);
+    }
+
+    private class ListIterator<E> implements Iterator<E> {
+        private ListElem<E> current;
+
+        public ListIterator(ListElem<E> head) {
+            current = head;
+        }
+
+        @Override
+        public boolean hasNext() {
+            return current != null;
+        }
+
+        @Override
+        public E next() {
+            ListElem<E> result = current;
+            current = current.getNext();
+            return result.getInfo();
+        }
     }
 }
